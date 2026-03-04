@@ -192,7 +192,7 @@ function loadStudents() {
             document.getElementById("totalStudents").textContent = students.length;
         })
         .catch(() => {
-            alert("O'quvchilarni yuklashda xatolik");
+            console.log("O'quvchilarni yuklashda xatolik");
         });
 }
 
@@ -252,5 +252,6 @@ function deleteStudent(jshshir) {
 
 </body>
 </html>
+
 
 
