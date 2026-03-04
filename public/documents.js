@@ -18,7 +18,7 @@ updateDocumentCount(documents);
 
     } catch (error) {
         console.error('Load documents error:', error);
-        showError('Не удалось загрузить документы: ' + error.message);
+        
     }
 }
 
@@ -440,6 +440,7 @@ window.viewCertificate = viewCertificate;
 window.editCertificate = editCertificate;
 window.printCertificate = printCertificate;
 window.showQR = showQR;
+
 
 
 
