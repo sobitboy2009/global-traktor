@@ -24,157 +24,124 @@
             overflow-x: hidden;
         }
         
-       :root {
-    --primary: #3b82f6; /* Акцентный синий */
-    --accent: #10b981;  /* Акцентный зеленый */
-    --bg-dark: #0f172a; /* Глубокий темный фон */
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-main: #f8fafc;
-    --text-dim: #94a3b8;
+      :root {
+    --primary: #2563eb; /* Тот самый "профессиональный синий" */
+    --primary-hover: #1d4ed8;
+    --bg-page: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --card-bg: #ffffff;
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-page);
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 30px 30px; /* Тонкая сетка на фоне, как в чертежах */
     margin: 0;
-    font-family: 'Inter', -apple-system, sans-serif;
-    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
 }
 
-/* Фоновая анимация "Аврора" */
+/* Убираем старую анимацию совсем или делаем её статичным фоном */
 .bg-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    display: none; 
 }
 
-.bg-animation span {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1;
-    opacity: 0.4;
-    animation: move 20s infinite alternate;
-}
-
-/* Переделываем старые кружочки в мягкие световые пятна */
-.bg-animation span:nth-child(1) { width: 400px; height: 400px; background: var(--primary); left: -100px; top: -100px; }
-.bg-animation span:nth-child(2) { width: 300px; height: 300px; background: #6366f1; right: -50px; bottom: -50px; animation-duration: 15s; }
-.bg-animation span:nth-child(3) { width: 250px; height: 250px; background: var(--accent); left: 30%; top: 40%; animation-duration: 25s; }
-
-@keyframes move {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(50px, 100px) scale(1.1); }
-}
-
-/* Контейнер логина */
 .login-container {
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     width: 100%;
     max-width: 400px;
-    padding: 40px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    padding: 48px 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.login-header {
+    text-align: left; /* Смена выравнивания на левое часто выглядит современнее */
+    margin-bottom: 32px;
 }
 
 .login-header h2 {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #fff, var(--text-dim));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-main);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.025em;
 }
 
 .login-header p {
-    color: var(--text-dim);
-    font-size: 15px;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 0;
 }
 
 /* Поля ввода */
 .form-group {
     margin-bottom: 20px;
-    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
 }
 
 .form-input {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 14px 14px 14px 45px;
-    color: white;
-    font-size: 15px;
-    transition: all 0.2s ease;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
     box-sizing: border-box;
+    background-color: #fff;
+    color: var(--text-main);
 }
 
 .form-input:focus {
     outline: none;
     border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
+/* Иконки теперь опциональны, если хочешь оставить - вот стиль */
 .input-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-dim);
-    font-size: 18px;
-    pointer-events: none;
-}
-
-.form-input:focus + .input-icon {
-    color: var(--primary);
+    display: none; /* В этом стиле лучше обойтись без них или сделать серыми */
 }
 
 /* Кнопка */
 .btn-login {
     width: 100%;
-    padding: 14px;
-    background: var(--primary);
-    border: none;
-    border-radius: 12px;
+    padding: 12px;
+    background-color: var(--text-main); /* Черная или очень темная кнопка сейчас в тренде */
     color: white;
-    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
+    transition: background-color 0.2s;
+    margin-top: 8px;
 }
 
 .btn-login:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
+    background-color: #1e293b;
 }
 
-.btn-login:active { transform: translateY(0); }
-
-/* Дополнительные опции */
+/* Доп опции */
 .additional-options {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    margin-top: 16px;
     font-size: 13px;
-    color: var(--text-dim);
 }
 
 .forgot-password {
@@ -183,51 +150,38 @@ body {
     font-weight: 500;
 }
 
-.forgot-password:hover { text-decoration: underline; }
+.forgot-password:hover {
+    text-decoration: underline;
+}
 
 .signup-link {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
     font-size: 14px;
-    color: var(--text-dim);
+    color: var(--text-muted);
 }
 
 .signup-link a {
-    color: var(--text-main);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
-    margin-left: 5px;
 }
 
-/* Ошибки */
-#error {
-    background: rgba(239, 68, 68, 0.1);
-    color: #f87171;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 14px;
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    margin-bottom: 20px;
-    text-align: center;
-    display: none;
+/* Языковой селектор */
+.language-selector {
+    position: absolute;
+    top: -60px;
+    right: 0;
 }
 
-#error.show { display: block; animation: shake 0.4s ease-in-out; }
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-/* Селектор языка */
 .language-selector select {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 13px;
+    cursor: pointer;
 }
         
     </style>
@@ -308,4 +262,5 @@ body {
 
 
 </html>
+
 
