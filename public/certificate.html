@@ -603,7 +603,7 @@
 
         <div class="content">
             <div class="header-top">O'ZBEKISTON RESPUBLIKASI</div>
-            <div class="header-sub">"AVTOTRAKTOR-GLOBL MCHJ" MCHJ</div>
+            <div class="header-sub">"AVTOTRAKTOR-GLOBL" MCHJ</div>
             
             <div class="doc-title">GUVOHNOMA № <span id="certNumber">000000</span></div>
 
@@ -636,7 +636,7 @@
                 </div>
 
                 <div class="sign-area">
-                    <span class="sign-name" id="directorName"> Y Usmonova</span>
+                    <span class="sign-name" id="directorName"> Y BOZOROV</span>
                     <span class="sign-desc">Ta'lim muassasasi rahbari</span>
                 </div>
             </div>
@@ -674,8 +674,8 @@
     <script>
 // ==================== КОНФИГУРАЦИЯ ====================
 const APP_CONFIG = {
-    useOnlineMode: true,                 // false = офлайн-режим (данные в QR)
-    websiteDomain: "https://www.mttt-mexanizator.uz"
+    useOnlineMode: true,                 
+    websiteDomain: "https://www.attglobl-mexanizator.uz/"
 };
 // ==================== КОНЕЦ КОНФИГУРАЦИИ ====================
 
@@ -806,7 +806,7 @@ fetch(`/api/documents/${id}/details`)
             </div>
             <div class="info-item">
                 <div class="info-label">Rahbar</div>
-                <div class="info-value">${doc.director_name || 'Y Usmonova'}</div>
+                <div class="info-value">${doc.director_name || 'Y BOZOROV'}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Yaratilgan sana</div>
@@ -838,7 +838,7 @@ fetch(`/api/documents/${id}/details`)
         document.getElementById('commissionNumberFull').innerHTML = 
             `<span class="bold-black">${commissionNumber}</span>-sonli`;
             
-        document.getElementById('directorName').textContent = doc.director_name || 'Y Usmonova';
+        document.getElementById('directorName').textContent = doc.director_name || 'Y BOZOROV';
         
         if (courseStart) {
             document.getElementById('courseStartYear').textContent = courseStart.year;
@@ -963,7 +963,7 @@ fetch(`/api/documents/${id}/details`)
 function shareCertificate() {
     const certNumber = document.getElementById('certNumber').textContent;
     const studentName = document.getElementById('studentName').textContent;
-    const text = `"MMM TRAKTOR SERVIS" MCHJ guvohnomasi №${certNumber}. Talaba: ${studentName}`;
+    const text = `"AVTOTRAKTOR-GLOBL" MCHJ guvohnomasi №${certNumber}. Talaba: ${studentName}`;
     
     if (navigator.share) {
         navigator.share({
@@ -998,6 +998,7 @@ function showNotification(message, type = 'info') {
 </body>
 
 </html>
+
 
 
 
